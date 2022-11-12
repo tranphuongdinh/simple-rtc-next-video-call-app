@@ -3,7 +3,7 @@ import { Server } from "socket.io";
 const SocketHandler = (req, res) => {
   if (!res.socket.server.io) {
     const io = new Server(res.socket.server);
-
+    io.set("origins", "*:*");
     io.on("connection", (socket) => {
       socket.emit("me", socket.id);
 
